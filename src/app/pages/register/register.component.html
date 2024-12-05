@@ -5,8 +5,14 @@
 
   <main class="w-full flex flex-col justify-center items-center">
     <app-primary-title
-      [text]="'Bem-vindo(a) de volta'"
+      [text]="'Criar uma conta'"
       class="mb-10" />
+
+    <app-text-field-icon
+      [label]="'Nome de utilizador'"
+      [icon]="'badge'"
+      (valueChange)="onUsernameChange($event)"
+      class="w-1/2" />
 
     <app-text-field-icon
       [label]="'Endereço de e-mail'"
@@ -24,9 +30,9 @@
       class="mt-10 w-1/2" />
 
     <app-text-with-link
-      [text]="'Não tem uma conta? '"
-      [linkText]="'Regista-se'"
-      [link]="'/register'" />
+      [text]="'Já tem uma conta? '"
+      [linkText]="'Iniciar sessão'"
+      [link]="'/login'" />
 
     <app-text-divider
       class="w-full"

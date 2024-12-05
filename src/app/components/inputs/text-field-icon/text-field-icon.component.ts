@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import {
@@ -23,6 +23,9 @@ import {
   styleUrl: './text-field-icon.component.scss'
 })
 export class TextFieldIconComponent {
+
+  label = input('');
+  icon = input('');
 
   @Output() valueChange = new EventEmitter<string>();
 

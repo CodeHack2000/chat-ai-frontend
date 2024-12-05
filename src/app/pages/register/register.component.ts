@@ -10,15 +10,20 @@ import { TextWithLinkComponent } from "../../components/texts/text-with-link/tex
 import { LogoComponent } from "../../components/images/logo/logo.component";
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-register',
   imports: [PrimaryTitleComponent, TextFieldIconComponent, PasswordFieldComponent, MainSubmitButtonComponent, ExternalLoginButtonComponent, TextDividerComponent, TextWithLinkComponent, LogoComponent],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.scss'
 })
-export class LoginComponent {
+export class RegisterComponent {
 
+  username = '';
   email = '';
   password = '';
+
+  onUsernameChange(username: string) {
+    this.username = username;
+  }
 
   onEmailChange(email: string) {
     this.email = email;
@@ -29,6 +34,6 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    alert(this.email + ' - ' + this.password);
+    alert(this.username + ' - ' + this.email + ' - ' + this.password);
   }
 }

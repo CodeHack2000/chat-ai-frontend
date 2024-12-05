@@ -1,4 +1,4 @@
-import { Component, EventEmitter, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 import {
   MatButtonModule
@@ -15,6 +15,5 @@ import {
 export class MainSubmitButtonComponent {
 
   buttonText = input('');
-
-  onClick = new EventEmitter();
+  onClick = output();
 }

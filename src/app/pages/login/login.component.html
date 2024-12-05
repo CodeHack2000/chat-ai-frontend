@@ -1,0 +1,33 @@
+<div class="bg-background flex flex-col justify-center items-center h-screen">
+  
+
+  <app-primary-title class="mb-10" />
+
+  <app-text-field-icon
+    (valueChange)="onEmailChange($event)"
+    class="w-1/2" />
+
+  <app-password-field
+    (valueChange)="onPasswordChange($event)"
+    class="w-1/2" />
+
+  <app-main-submit-button
+    [buttonText]="'Continuar'"
+    (onClick)="onSubmit()"
+    class="mt-10 w-1/2" />
+
+  <app-text-with-link
+    [text]="'Não tem uma conta? '"
+    [linkText]="'Regista-se'"
+    [link]="'/register'" />
+
+  <app-text-divider
+    class="w-full"
+    [text]="'OU'" />
+
+  <app-external-login-button
+    [buttonText]="'Continuar com Google'"
+    [replyLink]="'/'"
+    [icon]="'google_icon'"
+    class="w-1/2" />
+</div>

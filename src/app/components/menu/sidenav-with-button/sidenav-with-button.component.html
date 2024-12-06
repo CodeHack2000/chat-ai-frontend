@@ -1,0 +1,21 @@
+<div class="w-full h-full">
+  <app-sidenav
+    #sidenav
+    class="!w-fit !h-full !absolute left-0 top-0 !z-20" />
+
+  <div
+    class="absolute top-0 left-0 w-full h-full bg-background z-10 opacity-50"
+    [class]="isNavOpen() ? 'block' : 'hidden'"
+  ></div>
+
+  <button
+    mat-icon-button
+    (click)="toggleSidenav()"
+    class="!absolute top-5 left-5 !z-30"
+  >
+    <mat-icon
+      class="text-primary"
+      [class]="isNavOpen() ?  'animate-bounce' : ''"
+    >{{ icon() }} </mat-icon>
+  </button>
+</div>

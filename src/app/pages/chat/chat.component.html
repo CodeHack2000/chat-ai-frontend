@@ -6,6 +6,8 @@
 
   <main class="w-full flex flex-col items-center mt-5 h-full">
 
+    <app-sidenav-with-button />
+
     @if (chatService.getUserChatMessages().length === 0) {
       <app-welcome-card
         class="h-full w-full flex"/>

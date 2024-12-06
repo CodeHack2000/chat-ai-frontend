@@ -1,0 +1,17 @@
+<div class="w-full px-12 h-fit">
+
+  @for (item of chatService.getUserChatMessages(); track item.id) {
+
+    <div class="text-primary w-full text-lg">
+
+      <app-user-message-text
+        [text]="item.userMessage" />
+
+      <app-bot-message-text
+        [text]="item.botMessage" />
+
+    </div>
+
+  }
+
+</div>

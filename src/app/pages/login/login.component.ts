@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import { PrimaryTitleComponent } from "../../components/titles/primary-title/primary-title.component";
 import { TextFieldIconComponent } from "../../components/inputs/text-field-icon/text-field-icon.component";
@@ -8,6 +8,9 @@ import { ExternalLoginButtonComponent } from "../../components/buttons/external-
 import { TextDividerComponent } from "../../components/dividers/text-divider/text-divider.component";
 import { TextWithLinkComponent } from "../../components/texts/text-with-link/text-with-link.component";
 import { LogoComponent } from "../../components/images/logo/logo.component";
+import { UserLogin } from '../../models/user-login.mode';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +19,9 @@ import { LogoComponent } from "../../components/images/logo/logo.component";
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+
+  authService = inject(AuthService);
+  router = inject(Router);
 
   email = '';
   password = '';
@@ -29,6 +35,15 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    alert(this.email + ' - ' + this.password);
+    const user: UserLogin = {
+      email: this.email,
+      password: this.password
+    };
+
+    this.authService.login(user).subscribe((result: boolean) => {
+      if (result) {
+        this.router.navigate(['/']);
+      }
+    });
   }
 }

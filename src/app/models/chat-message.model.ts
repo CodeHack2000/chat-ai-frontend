@@ -1,5 +1,5 @@
 export interface Message {
-  id: number;
+  id: `${string}-${string}-${string}-${string}-${string}`;
   userMessage: string;
   botMessage: string;
 }

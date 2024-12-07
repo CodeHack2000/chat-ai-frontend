@@ -2,10 +2,11 @@
   mat-fab
   extended
   class="!text-onBackground !text-lg !font-light !w-full !rounded-md !flex !justify-start !items-center !h-12" style="font-family: 'Montserrat';"
-  routerLink="{{ replyLink() }}"
 >
-  <mat-icon
-    class="!mx-1"
-    [svgIcon]="icon()" />
-  <span class="ml-4">{{ buttonText() }}</span>
+  <a href="{{ replyLink() }}">
+    <mat-icon
+      class="!mx-1"
+      [svgIcon]="icon()" />
+    <span class="ml-4">{{ buttonText() }}</span>
+  </a>
 </button>

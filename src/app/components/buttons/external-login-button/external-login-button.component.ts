@@ -1,6 +1,5 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { RouterLink } from '@angular/router';
 
 import {
   MatButtonModule
@@ -14,8 +13,7 @@ import {
   selector: 'app-external-login-button',
   imports: [
     MatButtonModule,
-    MatIconModule,
-    RouterLink
+    MatIconModule
   ],
   templateUrl: './external-login-button.component.html',
   styleUrl: './external-login-button.component.scss'

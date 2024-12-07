@@ -1,8 +1,10 @@
-<div class="w-full px-12 h-fit">
+<div class="px-4 scroller !overflow-hidden">
 
-  @for (item of chatService.getUserChatMessages(); track item.id) {
-
-    <div class="text-primary w-full text-lg">
+  <cdk-virtual-scroll-viewport
+    itemSize="100"
+    class="!h-full"
+  >
+    <div *cdkVirtualFor="let item of chatService.getUserChatMessages(); trackBy: trackById">
 
       <app-user-message-text
         [text]="item.userMessage" />
@@ -11,7 +13,6 @@
         [text]="item.botMessage" />
 
     </div>
-
-  }
+  </cdk-virtual-scroll-viewport>
 
 </div>

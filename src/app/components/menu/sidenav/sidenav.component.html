@@ -32,7 +32,7 @@
     <div class="w-full px-4 md:absolute bottom-5 sm:flex">
       <app-nav-menu-button
         [text]="'Terminar sessão'"
-        [link]="'/'"
+        (onClick)="logout()"
         [icon]="'logout'"
         class="w-full" />
     </div>

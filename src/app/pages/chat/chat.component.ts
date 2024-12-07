@@ -1,4 +1,4 @@
-import { Component, inject, Input, ViewChild } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 
 import { ChatFieldComponent } from "../../components/inputs/chat-field/chat-field.component";
 import { WelcomeCardComponent } from "./welcome-card/welcome-card.component";
@@ -15,7 +15,7 @@ import { SidenavWithButtonComponent } from "../../components/menu/sidenav-with-b
 
 @Component({
   selector: 'app-chat',
-  imports: [ChatFieldComponent, WelcomeCardComponent, MessagesCardComponent, SecondaryTitleComponent, MatButtonModule, MatSidenavModule, SidenavComponent, MatIconModule, SidenavWithButtonComponent],
+  imports: [ChatFieldComponent, WelcomeCardComponent, MessagesCardComponent, SecondaryTitleComponent, MatButtonModule, MatSidenavModule, MatIconModule, SidenavWithButtonComponent],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.scss'
 })
@@ -25,11 +25,23 @@ export class ChatComponent {
 
   chatService = inject(ChatService);
 
+  /**
+   * Toggle the sidenav open or closed.
+   * @remarks
+   * This is a convenience wrapper around the sidenav's own toggleDrawer method.
+   */
   toggleSidenav() {
     this.sidenav.toggleDrawer();
   }
 
+  /**
+   * Called when the user submits a message to the chatbot.
+   * Sends the message to the AI model and adds the response to the chat history.
+   * @param message The user's message to send to the AI model.
+   */
   onSubmit(message: string) {
-    this.chatService.addUserChatMessage(message, 'Resposta do bot');
+    this.chatService.sendMessageToModel(message).subscribe((botResponse) => {
+      this.chatService.addUserChatMessage(message, botResponse);
+    });
   }
 }

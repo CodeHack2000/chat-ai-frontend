@@ -1,28 +1,18 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { ChatMessage, Message } from '../models/chat-message.model';
+import { CookieService } from 'ngx-cookie-service';
+import { catchError, map, Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
 
-  private messages = signal<ChatMessage[]>([
-    {
-      userId: '1',
-      messages: []
-    }
-  ]);
+  private messages = signal<ChatMessage[]>([]);
+  private baseUrl = 'http://localhost:3100';
 
-  /**
-        {
-          id: 0,
-          userMessage: 'Mensagem de teste',
-          botMessage: 'Olá! Tudo funcionando por aqui. Como posso ajudar você hoje?'
-        }
-       */
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cookieService: CookieService) { }
 
   /**
    * @description
@@ -31,9 +21,7 @@ export class ChatService {
    * The current session id.
    */
   private getSession(): string {
-    //! Remover o comentário abaixo
-    //return this.http.get('session-id').subscribe().toString();
-    return '1';
+    return this.cookieService.get('connect.sid');
   }
 
   /**
@@ -58,9 +46,12 @@ export class ChatService {
    */
   addUserChatMessage(userMessage: string, botMessage: string) {
     const userId = this.getSession();
+    console.log('USER ID ' + userId);
     const userChatMessages = this.messages().find((item: ChatMessage) => item.userId === userId);
-    const userNextMessageId = this.getUserNextMessageId();
+    const userNextMessageId = crypto.randomUUID();
     const message: Message = { id: userNextMessageId, userMessage, botMessage };
+
+    console.log(userChatMessages);
 
     if (userChatMessages) {
       userChatMessages.messages.push(message);
@@ -81,5 +72,24 @@ export class ChatService {
   getUserChatMessages(): Message[] {
     const userId = this.getSession();
     return this.messages().find((item: ChatMessage) => item.userId === userId)?.messages || [];
+  }
+
+  /**
+   * Makes an HTTP POST request to the /openAi/sendMessageToModel route to send a message to the AI model.
+   * @param message The message to send to the AI model.
+   * @returns An Observable that resolves to the response from the AI model. If the request fails, the Observable
+   * returned by catchError is resolved with 'Error sending message'.
+   */
+  sendMessageToModel(message: string): Observable<string> {
+    const url = this.baseUrl + '/openAi/sendMessageToModel';
+    const body = { message };
+
+    /*return this.http.post<string>(url, body, {
+      withCredentials: true,
+    }).pipe(
+      map((response) => response as string),
+      catchError(() => of('Error sending message'))
+    );*/
+    return of('test');
   }
 }

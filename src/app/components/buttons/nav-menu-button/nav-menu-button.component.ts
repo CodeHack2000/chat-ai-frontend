@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -17,4 +17,5 @@ export class NavMenuButtonComponent {
   text = input('');
   link = input('');
   icon = input('');
+  onClick = output();
 }

@@ -1,5 +1,5 @@
-import { Component, EventEmitter, input, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, EventEmitter, Input, input, Output } from '@angular/core';
+import { FormsModule, NgModel } from '@angular/forms';
 
 import {
   MatFormFieldModule
@@ -20,13 +20,17 @@ import {
     FormsModule
   ],
   templateUrl: './text-field-icon.component.html',
-  styleUrl: './text-field-icon.component.scss'
+  styleUrl: './text-field-icon.component.scss',
+  providers: [NgModel]
 })
 export class TextFieldIconComponent {
 
   label = input('');
   icon = input('');
+  required = input(false);
 
+  @Input() textInputPattern: RegExp = new RegExp('');
+  @Input() getErrorMessage!: (control: NgModel) => string;
   @Output() valueChange = new EventEmitter<string>();
 
   text = '';

@@ -8,26 +8,8 @@
       [text]="'Criar uma conta'"
       class="mb-10" />
 
-    <app-text-field-icon
-      [label]="'Nome de utilizador'"
-      [icon]="'badge'"
-      (valueChange)="onUsernameChange($event)"
-      class="w-1/2" />
-
-    <app-text-field-icon
-      [label]="'Endereço de e-mail'"
-      [icon]="'email'"
-      (valueChange)="onEmailChange($event)"
-      class="w-1/2" />
-
-    <app-password-field
-      (valueChange)="onPasswordChange($event)"
-      class="w-1/2" />
-
-    <app-main-submit-button
-      [buttonText]="'Continuar'"
-      (onClick)="onSubmit()"
-      class="mt-10 w-1/2" />
+    <app-register-form
+      class="w-full" />
 
     <app-text-with-link
       [text]="'Já tem uma conta? '"

@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Output, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, EventEmitter, Input, input, Output, signal } from '@angular/core';
+import { FormsModule, NgModel } from '@angular/forms';
 
 import {
   MatFormFieldModule
@@ -23,14 +23,19 @@ import {
     FormsModule
   ],
   templateUrl: './password-field.component.html',
-  styleUrl: './password-field.component.scss'
+  styleUrl: './password-field.component.scss',
+  providers: [NgModel]
 })
 export class PasswordFieldComponent {
 
+  @Input() getErrorMessage!: (control: NgModel) => string;
+  @Input() passwordPattern: RegExp = new RegExp('');
   @Output() valueChange = new EventEmitter<string>();
+  required = input(false);
 
   text = '';
   hide = signal(true);
+
 
   onInputChange() {
     this.valueChange.emit(this.text);

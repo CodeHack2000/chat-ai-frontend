@@ -4,6 +4,17 @@
     style="font-family: 'Montserrat';"
     matInput
     [(ngModel)]="text"
-    (input)="onInputChange()">
+    (input)="onInputChange()"
+    #textInput="ngModel"
+    [pattern]="textInputPattern"
+    required
+  >
   <mat-icon matSuffix>{{ icon() }}</mat-icon>
+  @if (textInput.invalid && textInput.touched) {
+    <mat-error
+      style="font-family: 'Montserrat';"
+    >
+      {{ getErrorMessage(textInput) }}
+    </mat-error>
+  }
 </mat-form-field>

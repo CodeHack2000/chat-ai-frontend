@@ -1,0 +1,27 @@
+<form
+  (ngSubmit)="onSubmit()"
+  class="w-full flex flex-col items-center" >
+
+  <app-text-field-icon
+    [label]="'Endereço de e-mail'"
+    [icon]="'email'"
+    (valueChange)="onEmailChange($event)"
+    [textInputPattern]="emailPattern"
+    [required]="true"
+    [getErrorMessage]="getEmailErrorMessage"
+    class="w-1/2" />
+
+  <app-password-field
+    (valueChange)="onPasswordChange($event)"
+    [getErrorMessage]="getPasswordErrorMessage"
+    [passwordPattern]="passwordPattern"
+    [required]="true"
+    class="w-1/2 mt-3" />
+
+  <app-main-submit-button
+    [buttonText]="'Continuar'"
+    (onClick)="onSubmit()"
+    class="mt-10 w-1/2"
+    [disabled]="formIsInvalid()" />
+
+</form>

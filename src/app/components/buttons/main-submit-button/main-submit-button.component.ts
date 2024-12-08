@@ -16,4 +16,5 @@ export class MainSubmitButtonComponent {
 
   buttonText = input('');
   onClick = output();
+  disabled = input(false);
 }

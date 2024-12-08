@@ -8,20 +8,8 @@
       [text]="'Bem-vindo(a) de volta'"
       class="mb-10" />
 
-    <app-text-field-icon
-      [label]="'Endereço de e-mail'"
-      [icon]="'email'"
-      (valueChange)="onEmailChange($event)"
-      class="w-1/2" />
-
-    <app-password-field
-      (valueChange)="onPasswordChange($event)"
-      class="w-1/2" />
-
-    <app-main-submit-button
-      [buttonText]="'Continuar'"
-      (onClick)="onSubmit()"
-      class="mt-10 w-1/2" />
+    <app-login-form
+      class="w-full" />
 
     <app-text-with-link
       [text]="'Não tem uma conta? '"

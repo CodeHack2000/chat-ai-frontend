@@ -1,0 +1,47 @@
+<div class="px-4 scroller !overflow-hidden mt-5">
+
+  <app-small-icon-button
+    [icon]="'cloud_sync'"
+    [text]="'Atualizar histórico...'"
+    (onClick)="updateUserHistoryMessages()"
+    class="absolute right-5 top-5"
+  />
+
+  <cdk-virtual-scroll-viewport
+    itemSize="100"
+    class="!h-full"
+  >
+
+    <mat-accordion class="!w-full">
+      <div *cdkVirtualFor="let item of userHistoryMessages(); trackBy: trackByIdHistoryData">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span
+                class="!text-primary"
+                style="white-space: pre-wrap; font-family: 'Montserrat';"
+              >
+                {{ item.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) }}
+              </span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          @for (message of item.messages; track message) {
+            <div>
+              <app-user-message-text
+                [text]="message.userMessage" />
+
+              <app-bot-message-text
+                [text]="message.botMessage" />
+
+              @if(message.recommendedProducts) {
+                <app-bot-products
+                  [recommendedProducts]="message.recommendedProducts" />
+              }
+            </div>
+          }
+        </mat-expansion-panel>
+      </div>
+    </mat-accordion>
+  </cdk-virtual-scroll-viewport>
+
+</div>

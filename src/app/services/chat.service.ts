@@ -1,8 +1,9 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { ChatMessage, Message } from '../models/chat-message.model';
 import { CookieService } from 'ngx-cookie-service';
 import { catchError, map, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,31 +13,9 @@ export class ChatService {
   private messages = signal<ChatMessage[]>([]);
   private baseUrl = 'http://localhost:3100';
 
+  authService = inject(AuthService);
+
   constructor(private http: HttpClient, private cookieService: CookieService) { }
-
-  /**
-   * @description
-   * Gets the current session id.
-   * @returns
-   * The current session id.
-   */
-  private getSession(): string {
-    return this.cookieService.get('connect.sid');
-  }
-
-  /**
-   * @description
-   * Retrieves the next message ID for the current user.
-   *
-   * @returns
-   * The number representing the next message ID, which is the current count of messages for the user.
-   * If the user has no messages, returns 0.
-   */
-  getUserNextMessageId(): number {
-    const userId = this.getSession();
-    const userChatMessages = this.messages().find((item: ChatMessage) => item.userId === userId);
-    return userChatMessages?.messages.length || 0;
-  }
 
   /**
    * @description
@@ -45,8 +24,7 @@ export class ChatService {
    * @param botMessage The message to add to the bot's chat messages.
    */
   addUserChatMessage(userMessage: string, botMessage: string) {
-    const userId = this.getSession();
-    console.log('USER ID ' + userId);
+    const userId = this.authService.getUserUUID()!;
     const userChatMessages = this.messages().find((item: ChatMessage) => item.userId === userId);
     const userNextMessageId = crypto.randomUUID();
     const message: Message = { id: userNextMessageId, userMessage, botMessage };
@@ -70,7 +48,7 @@ export class ChatService {
    * An array of the user's chat messages.
    */
   getUserChatMessages(): Message[] {
-    const userId = this.getSession();
+    const userId = this.authService.getUserUUID()!;
     return this.messages().find((item: ChatMessage) => item.userId === userId)?.messages || [];
   }
 
@@ -84,12 +62,11 @@ export class ChatService {
     const url = this.baseUrl + '/openAi/sendMessageToModel';
     const body = { message };
 
-    /*return this.http.post<string>(url, body, {
+    return this.http.post<string>(url, body, {
       withCredentials: true,
     }).pipe(
       map((response) => response as string),
       catchError(() => of('Error sending message'))
-    );*/
-    return of('test');
+    );
   }
 }

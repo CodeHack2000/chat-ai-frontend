@@ -1,4 +1,5 @@
 import { Component, input, output } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -7,7 +8,8 @@ import { MatIconModule } from '@angular/material/icon';
   selector: 'app-nav-menu-button',
   imports: [
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    RouterLink
   ],
   templateUrl: './nav-menu-button.component.html',
   styleUrl: './nav-menu-button.component.scss'

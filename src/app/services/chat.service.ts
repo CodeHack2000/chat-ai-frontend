@@ -25,17 +25,18 @@ export class ChatService {
    */
   addUserChatMessage(userMessage: string, botMessage: string) {
     const userId = this.authService.getUserUUID()!;
-    const userChatMessages = this.messages().find((item: ChatMessage) => item.userId === userId);
+    const userChatMessagesIndex = this.messages().findIndex((item: ChatMessage) => item.userId === userId);
     const userNextMessageId = crypto.randomUUID();
     const message: Message = { id: userNextMessageId, userMessage, botMessage };
 
-    console.log(userChatMessages);
-
-    if (userChatMessages) {
-      userChatMessages.messages.push(message);
-      this.messages.set([...this.messages(), userChatMessages]);
-    }
-    else {
+    if (userChatMessagesIndex !== -1) {
+      // Clone the existing messages and update the entry
+      const updatedMessages = [...this.messages()];
+      const userChatMessages = updatedMessages[userChatMessagesIndex];
+      userChatMessages.messages = [...userChatMessages.messages, message];
+      this.messages.set(updatedMessages); // Update the signal with a new reference
+    } else {
+      // Add a new entry for this user
       const userChatMessages: ChatMessage = { userId, messages: [message] };
       this.messages.set([...this.messages(), userChatMessages]);
     }

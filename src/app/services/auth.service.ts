@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
+
 import { UserRegister } from '../models/user-register.model';
-import { UserLogin } from '../models/user-login.mode';
+import { UserLogin } from '../models/user-login.model';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +14,8 @@ export class AuthService {
   private baseUrl = 'http://localhost:3100';
   private userKey = 'userUUID';
   private expirationKey = 'uuidExpiration';
+
+  private authenticatedUsers = signal<User[]>([]);
 
   constructor(private http: HttpClient) { }
 
@@ -28,12 +32,38 @@ export class AuthService {
       map((response) => {
         if (response.status === 200) {
           this.setUserUUID();
+          this.setUser(response.body as User);
           return true;
         }
         return false;
       }),
       catchError(() => of(false))
     );
+  }
+
+  getUser(): User | undefined {
+    const userUUID = this.getUserUUID();
+    return this.authenticatedUsers().find((user) => user.id === userUUID);
+  }
+
+  private setUser(userData: User): void {
+    const userId = this.getUserUUID();
+    const users = this.authenticatedUsers();
+
+    let user = users.find((user) => user.id === userId);
+
+    if (user) {
+      user = { ...user, ...userData };
+    }
+    else {
+      user = {
+        ...userData,
+        id: userId!
+      }
+      users.push(user);
+    }
+
+    this.authenticatedUsers.set([...users]);
   }
 
   /**

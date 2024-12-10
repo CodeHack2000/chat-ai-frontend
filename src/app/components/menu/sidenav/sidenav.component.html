@@ -6,35 +6,41 @@
   <mat-drawer
     #drawer
     mode="side"
-    class="!bg-inverseOnSurface !rounded-none shadow-lg"
+    class="!bg-inverseOnSurface !rounded-none shadow-lg !h-full"
+    [opened]="true"
   >
-    <div class="w-full h-fit mt-20 px-4">
-      <app-nav-menu-button
-        [text]="'Chatbot'"
-        [link]="'/'"
-        [icon]="'chat'" />
+    <div class="flex flex-col h-full">
+      <div class="w-full h-fit mt-20 px-4">
+        <app-nav-menu-button
+          [text]="'Chatbot'"
+          [link]="'/'"
+          [icon]="'chat'" />
 
-      <app-nav-menu-button
-        [text]="'Histórico de mensagens'"
-        [link]="'/history'"
-        [icon]="'history'" />
+        <app-nav-menu-button
+          [text]="'Histórico de mensagens'"
+          [link]="'/history'"
+          [icon]="'history'" />
 
-      <app-nav-menu-button
-        [text]="'Configurações'"
-        [link]="'/'"
-        [icon]="'settings'" />
+        <app-nav-menu-button
+          [text]="'Configurações'"
+          [link]="'/'"
+          [icon]="'settings'" />
 
-      <app-nav-menu-button
-        [text]="'Atualizar plano'"
-        [link]="'/'"
-        [icon]="'credit_score'" />
-    </div>
-    <div class="w-full px-4 md:absolute bottom-5 sm:flex">
-      <app-nav-menu-button
-        [text]="'Terminar sessão'"
-        (onClick)="logout()"
-        [icon]="'logout'"
-        class="w-full" />
+        <app-nav-menu-button
+          [text]="'Atualizar plano'"
+          [link]="'/'"
+          [icon]="'credit_score'" />
+      </div>
+      <div class="w-full !flex-1">
+        <app-user-card />
+      </div>
+      <div class="w-full px-4 h-fit mb-5">
+        <app-nav-menu-button
+          [text]="'Terminar sessão'"
+          (onClick)="logout()"
+          [icon]="'logout'"
+          class="w-full" />
+      </div>
     </div>
   </mat-drawer>
 

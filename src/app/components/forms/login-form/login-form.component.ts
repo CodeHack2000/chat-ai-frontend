@@ -6,7 +6,7 @@ import { TextFieldIconComponent } from '../../inputs/text-field-icon/text-field-
 import { PasswordFieldComponent } from '../../inputs/password-field/password-field.component';
 import { MainSubmitButtonComponent } from '../../buttons/main-submit-button/main-submit-button.component';
 import { AuthService } from '../../../services/auth.service';
-import { UserLogin } from '../../../models/user-login.mode';
+import { UserLogin } from '../../../models/user-login.model';
 import { SnackbarService } from '../../../services/snackbar.service';
 
 @Component({

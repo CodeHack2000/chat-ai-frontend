@@ -5,7 +5,7 @@ import { ExternalLoginButtonComponent } from "../../components/buttons/external-
 import { TextDividerComponent } from "../../components/dividers/text-divider/text-divider.component";
 import { TextWithLinkComponent } from "../../components/texts/text-with-link/text-with-link.component";
 import { LogoComponent } from "../../components/images/logo/logo.component";
-import { UserLogin } from '../../models/user-login.mode';
+import { UserLogin } from '../../models/user-login.model';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { LoginFormComponent } from "../../components/forms/login-form/login-form.component";

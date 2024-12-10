@@ -1,0 +1,13 @@
+<div class="w-full h-full flex justify-center items-end">
+  <mat-card
+    class="!w-1/2 !h-fit mb-5 !shadow-lg"
+  >
+    <img
+      mat-card-image
+      [src]="avatarUrl()"
+    />
+    <mat-card-content>
+      <span class="flex justify-center pt-3">{{ username() }}</span>
+    </mat-card-content>
+  </mat-card>
+</div>

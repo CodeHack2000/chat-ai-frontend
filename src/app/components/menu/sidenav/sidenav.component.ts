@@ -1,11 +1,13 @@
 import { Component, inject, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
+
 import { NavMenuButtonComponent } from "../../buttons/nav-menu-button/nav-menu-button.component";
 import { AuthService } from '../../../services/auth.service';
-import { Router } from '@angular/router';
+import { UserCardComponent } from "../../cards/user-card/user-card.component";
 
 @Component({
   selector: 'app-sidenav',
@@ -13,7 +15,8 @@ import { Router } from '@angular/router';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    NavMenuButtonComponent
+    NavMenuButtonComponent,
+    UserCardComponent
 ],
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.scss'

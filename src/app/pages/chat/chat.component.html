@@ -17,6 +17,11 @@
         class="!w-full !h-full" />
     }
 
+    @if (isLoading()) {
+
+      <app-progress-bar />
+    }
+
   </main>
 
   <app-chat-field

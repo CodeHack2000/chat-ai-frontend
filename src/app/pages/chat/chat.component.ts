@@ -1,4 +1,4 @@
-import { Component, inject, ViewChild } from '@angular/core';
+import { Component, inject, signal, ViewChild } from '@angular/core';
 
 import { ChatFieldComponent } from "../../components/inputs/chat-field/chat-field.component";
 import { WelcomeCardComponent } from "./welcome-card/welcome-card.component";
@@ -9,13 +9,14 @@ import { SecondaryTitleComponent } from "../../components/titles/secondary-title
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidenavComponent } from "../../components/menu/sidenav/sidenav.component";
+import { SidenavWithButtonComponent } from "../../components/menu/sidenav-with-button/sidenav-with-button.component";
 
 import { MatIconModule } from '@angular/material/icon';
-import { SidenavWithButtonComponent } from "../../components/menu/sidenav-with-button/sidenav-with-button.component";
+import { ProgressBarComponent } from "../../components/progress-bar/progress-bar.component";
 
 @Component({
   selector: 'app-chat',
-  imports: [ChatFieldComponent, WelcomeCardComponent, MessagesCardComponent, SecondaryTitleComponent, MatButtonModule, MatSidenavModule, MatIconModule, SidenavWithButtonComponent],
+  imports: [ChatFieldComponent, WelcomeCardComponent, MessagesCardComponent, SecondaryTitleComponent, MatButtonModule, MatSidenavModule, MatIconModule, SidenavWithButtonComponent, SidenavWithButtonComponent, ProgressBarComponent],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.scss'
 })
@@ -24,6 +25,8 @@ export class ChatComponent {
   @ViewChild('sidenav') sidenav!: SidenavComponent;
 
   chatService = inject(ChatService);
+
+  isLoading = signal(false);
 
   /**
    * Toggle the sidenav open or closed.
@@ -40,7 +43,9 @@ export class ChatComponent {
    * @param message The user's message to send to the AI model.
    */
   onSubmit(message: string) {
+    this.isLoading.set(true);
     this.chatService.sendMessageToModel(message).subscribe((botResponse) => {
+      this.isLoading.set(false);
       this.chatService.addUserChatMessage(message, botResponse);
     });
   }

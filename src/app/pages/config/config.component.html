@@ -1,0 +1,37 @@
+<div class="bg-background h-full flex flex-col items-center w-full">
+
+  <app-secondary-title
+    [text]="'Chatbot AI for Healthcare Triage'"
+    class="h-fit mt-5" />
+
+  <main class="w-full flex flex-col items-center mt-5 h-full">
+
+    <app-sidenav-with-button />
+
+    <app-primary-title
+      [text]="'Configurações'"
+      class="mt-10" />
+
+    <div
+      class="w-full flex flex-1 justify-center items-center mb-20"
+    >
+      @if (showCard() === 0) {
+        <app-config-card
+          class="!w-1/2"
+          (changeCard)="changeCard($event)" />
+      }
+      @else if (showCard() === 1) {
+        <app-change-image
+          class="!w-1/2"
+          (changeCard)="changeCard($event)"
+          (setIsLoading)="setIsLoading($event)" />
+      }
+    </div>
+
+    @if (isLoading()) {
+
+      <app-progress-bar />
+    }
+
+  </main>
+</div>

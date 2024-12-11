@@ -4,6 +4,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { authGuard } from './guards/auth.guard';
 import { HistoryComponent } from './pages/history/history.component';
+import { ConfigComponent } from './pages/config/config.component';
 
 export const routes: Routes = [
   {
@@ -23,6 +24,11 @@ export const routes: Routes = [
   {
     path: 'history',
     component: HistoryComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'config',
+    component: ConfigComponent,
     canActivate: [authGuard]
   }
 ];

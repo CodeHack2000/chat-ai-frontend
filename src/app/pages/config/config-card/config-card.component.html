@@ -1,0 +1,15 @@
+<mat-card appearance="outlined" class="w-full shadow-lg">
+  <mat-card-header>
+    <mat-card-title style="font-family: 'Montserrat';" class="text-primary" >{{ user()?.username }}</mat-card-title>
+    <mat-card-subtitle style="font-family: 'Montserrat';">Perfis: {{ user()?.profiles?.join(', ') }}</mat-card-subtitle>
+  </mat-card-header>
+  <img
+    mat-card-image
+    [src]="avatarUrl()" />
+  <mat-card-actions>
+    <app-small-icon-button
+      [icon]="'add_photo_alternate'"
+      [text]="'Alterar imagem de perfil'"
+      (click)="onChangeCard(1)" />
+  </mat-card-actions>
+</mat-card>

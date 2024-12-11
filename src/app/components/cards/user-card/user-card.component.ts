@@ -1,5 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component, inject, signal } from '@angular/core';
 
 import { MatCardModule } from '@angular/material/card';
 
@@ -13,16 +12,14 @@ import { AuthService } from '../../../services/auth.service';
   templateUrl: './user-card.component.html',
   styleUrl: './user-card.component.scss'
 })
-export class UserCardComponent implements OnInit {
+export class UserCardComponent {
 
   authService = inject(AuthService);
 
   username = signal('');
   avatarUrl = signal('');
 
-  constructor(private domSanitizer: DomSanitizer) {}
-
-  ngOnInit(): void {
+  constructor() {
     const user = this.authService.getUser();
     this.username.set(user!.username);
     if (user?.avatar) {

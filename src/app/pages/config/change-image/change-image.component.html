@@ -1,0 +1,29 @@
+<mat-card appearance="outlined" class="w-full shadow-lg">
+  <mat-card-header>
+    <mat-card-title style="font-family: 'Montserrat';" class="text-primary" >Alterar imagem de perfil</mat-card-title>
+    <mat-card-subtitle style="font-family: 'Montserrat';">Selecione uma imagem</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="!py-10">
+    <form>
+      <input
+        id="file-input"
+        formControlName="image"
+        type="file"
+        accept="image/png, image/jpeg, image/jpg"
+        class="custom-file-input bg-onPrimary text-primary w-full rounded-lg"
+        style="font-family: 'Montserrat';"
+        (change)="onFileChange($event)" >
+    </form>
+  </mat-card-content>
+  <mat-card-actions class="flex justify-end">
+    <app-small-icon-button
+      [icon]="'cancel'"
+      [text]="'Cancelar'"
+      (click)="onChangeCard(0)"
+      class="mr-2" />
+    <app-small-icon-button
+      [icon]="'add_photo_alternate'"
+      [text]="'Submeter'"
+      (click)="submit()" />
+  </mat-card-actions>
+</mat-card>

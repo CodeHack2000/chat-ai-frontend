@@ -5,6 +5,7 @@ import { ChatComponent } from './pages/chat/chat.component';
 import { authGuard } from './guards/auth.guard';
 import { HistoryComponent } from './pages/history/history.component';
 import { ConfigComponent } from './pages/config/config.component';
+import { UserPlanComponent } from './pages/user-plan/user-plan.component';
 
 export const routes: Routes = [
   {
@@ -29,6 +30,11 @@ export const routes: Routes = [
   {
     path: 'config',
     component: ConfigComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'userPlan',
+    component: UserPlanComponent,
     canActivate: [authGuard]
   }
 ];

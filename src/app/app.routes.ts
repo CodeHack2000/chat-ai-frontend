@@ -1,11 +1,14 @@
 import { Routes } from '@angular/router';
+
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ChatComponent } from './pages/chat/chat.component';
-import { authGuard } from './guards/auth.guard';
 import { HistoryComponent } from './pages/history/history.component';
 import { ConfigComponent } from './pages/config/config.component';
 import { UserPlanComponent } from './pages/user-plan/user-plan.component';
+
+import { authVipGuard } from './guards/auth-vip.guard';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -25,7 +28,7 @@ export const routes: Routes = [
   {
     path: 'history',
     component: HistoryComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard, authVipGuard]
   },
   {
     path: 'config',

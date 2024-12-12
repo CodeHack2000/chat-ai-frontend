@@ -41,6 +41,16 @@ export class AuthService {
     );
   }
 
+  /**
+   * Determines if the current user has the given profile.
+   * @param profile The profile to check.
+   * @returns True if the user has the given profile, false otherwise.
+   */
+  hasUserProfile(profile: string): boolean {
+    const user = this.getUser()!;
+    return user.profiles.includes(profile);
+  }
+
   getUser(): User | undefined {
     const userUUID = this.getUserUUID();
     return this.authenticatedUsers().find((user) => user.id === userUUID);

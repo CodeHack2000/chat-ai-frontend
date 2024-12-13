@@ -1,10 +1,10 @@
 <mat-card appearance="outlined" class="w-full h-full shadow-lg">
   <mat-card-header>
-    <mat-card-title style="font-family: 'Montserrat';" class="text-primary !font-semibold !text-3xl" [class]="animation()" >{{ title() }}</mat-card-title>
-    <mat-card-subtitle style="font-family: 'Montserrat';" class="!text-xl" >{{ price() }} € / mês</mat-card-subtitle>
+    <mat-card-title style="font-family: 'Montserrat';" class="text-primary !font-semibold !text-lg md:!text-3xl xl:!text-5xl" [class]="animation()" >{{ title() }}</mat-card-title>
+    <mat-card-subtitle style="font-family: 'Montserrat';" class="!text-base md:!text-xl xl:!text-3xl" >{{ price() }} € / mês</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content class="!flex flex-col">
-    <span style="font-family: 'Montserrat'; white-space: pre-wrap;" class="!text-lg text-secondary" >{{ description() }}</span>
-    <span style="font-family: 'Montserrat'; white-space: pre-wrap;" class="!text-md text-secondary font-light mt-4">{{ additionalInfo() }}</span>
+    <span style="font-family: 'Montserrat'; white-space: pre-wrap;" class="text-sm md:!text-lg xl:!text-2xl text-secondary" >{{ description() }}</span>
+    <span style="font-family: 'Montserrat'; white-space: pre-wrap;" class="text-xs md:!text-base xl:!text-xl text-secondary font-light mt-4">{{ additionalInfo() }}</span>
   </mat-card-content>
 </mat-card>

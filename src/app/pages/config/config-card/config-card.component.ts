@@ -8,11 +8,18 @@ import { SmallIconButtonComponent } from "../../../components/buttons/small-icon
 import { UserConfigService } from '../../../services/user-config.service';
 import { SnackbarService } from '../../../services/snackbar.service';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MiniFabButtonComponent } from "../../../components/buttons/mini-fab-button/mini-fab-button.component";
+
 @Component({
   selector: 'app-config-card',
   imports: [
     MatCardModule,
-    SmallIconButtonComponent
+    SmallIconButtonComponent,
+    MatButtonModule,
+    MatIconModule,
+    MiniFabButtonComponent
 ],
   templateUrl: './config-card.component.html',
   styleUrl: './config-card.component.scss'

@@ -1,13 +1,13 @@
-<div class="w-full h-full flex justify-center items-end">
+<div class="w-full h-full grid grid-cols-1 md:grid-cols-3 3xl:grid-cols-1 place-content-end place-items-center gap-4 px-4 my-2">
   <mat-card
-    class="!w-1/2 !h-fit mb-5 !shadow-lg"
+    class="!w-full !h-fit mb-5 !shadow-lg col-span-full md:col-start-2 md:col-span-1 3xl:col-span-full"
   >
     <img
       mat-card-image
       [src]="avatarUrl()"
     />
     <mat-card-content>
-      <span class="flex justify-center pt-3 cursor-default select-none">{{ username() }}</span>
+      <span class="flex justify-center pt-3 cursor-default select-none text-lg lg:text-xl">{{ username() }}</span>
     </mat-card-content>
   </mat-card>
 </div>

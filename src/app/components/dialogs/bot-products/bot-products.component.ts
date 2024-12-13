@@ -24,7 +24,9 @@ export class BotProductsComponent {
       data: {
         recommendedProducts: this.recommendedProducts,
         title: 'Produtos Recomendados pelo Chatbot'
-      }
+      },
+      maxWidth: '90vw',
+      maxHeight: '90vh'
     });
   }
 }

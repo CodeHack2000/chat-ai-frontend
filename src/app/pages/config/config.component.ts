@@ -9,6 +9,8 @@ import { PrimaryTitleComponent } from "../../components/titles/primary-title/pri
 import { AuthService } from '../../services/auth.service';
 import { ConfigCardComponent } from "./config-card/config-card.component";
 import { ChangeImageComponent } from "./change-image/change-image.component";
+import { User } from '../../models/user.model';
+import { MainHeaderComponent } from "../../components/headers/main-header/main-header.component";
 
 @Component({
   selector: 'app-config',
@@ -19,7 +21,8 @@ import { ChangeImageComponent } from "./change-image/change-image.component";
     PrimaryTitleComponent,
     MatCardModule,
     ConfigCardComponent,
-    ChangeImageComponent
+    ChangeImageComponent,
+    MainHeaderComponent
 ],
   templateUrl: './config.component.html',
   styleUrl: './config.component.scss'
@@ -30,6 +33,18 @@ export class ConfigComponent {
 
   showCard= signal(0);
   isLoading = signal(false);
+  user = signal<User | undefined>(undefined);
+  avatarUrl = signal('');
+
+  constructor() {
+    this.user.set(this.authService.getUser());
+    if (this.user()?.avatar) {
+      this.avatarUrl.set(`data:image/jpeg;base64,${this.user()?.avatar}`);
+    }
+    else {
+      this.avatarUrl.set('assets/images/default_user.jpeg')
+    }
+  }
 
   changeCard(num: number) {
     this.showCard.set(num);

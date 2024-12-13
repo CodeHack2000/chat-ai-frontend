@@ -1,6 +1,6 @@
 <mat-drawer-container
   autosize
-  class="!w-full !h-full"
+  class=" !h-screen"
   [hasBackdrop]="true"
 >
   <mat-drawer
@@ -16,7 +16,7 @@
           [icon]="'chat'" />
 
         <app-nav-menu-button
-          [text]="'Histórico de mensagens'"
+          [text]="'Histórico'"
           [link]="'/history'"
           [icon]="'history'" />
 
@@ -30,8 +30,9 @@
           [link]="'/userPlan'"
           [icon]="'credit_score'" />
       </div>
-      <div class="w-full !flex-1">
-        <app-user-card />
+      <div class="w-full !flex-1 hidden xs:flex">
+        <app-user-card
+         class="w-full" />
       </div>
       <div class="w-full px-4 h-fit mb-5">
         <app-nav-menu-button

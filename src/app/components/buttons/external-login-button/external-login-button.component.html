@@ -1,12 +1,20 @@
-<button
+<a
   mat-fab
   extended
-  class="!text-onBackground !text-lg !font-light !w-full !rounded-md !flex !justify-start !items-center !h-12" style="font-family: 'Montserrat';"
+  class="!text-onBackground !text-lg !font-light !w-full !rounded-md xs:!flex !justify-start !items-center !h-12 !hidden" style="font-family: 'Montserrat';"
+  href="{{ replyLink() }}"
 >
-  <a href="{{ replyLink() }}">
-    <mat-icon
-      class="!mx-1"
-      [svgIcon]="icon()" />
-    <span class="ml-4">{{ buttonText() }}</span>
-  </a>
-</button>
+  <mat-icon
+    class="!mx-1"
+    [svgIcon]="icon()" />
+  <span class="ml-4">{{ buttonText() }}</span>
+</a>
+<a
+  mat-mini-fab
+  class="!text-onBackground !text-lg !font-light !w-full !rounded-md !h-10 xs:!hidden" style="font-family: 'Montserrat';"
+  href="{{ replyLink() }}"
+>
+  <mat-icon
+    class="!mx-1"
+    [svgIcon]="icon()" />
+</a>

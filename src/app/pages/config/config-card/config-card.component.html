@@ -1,15 +1,21 @@
-<mat-card appearance="outlined" class="w-full shadow-lg">
+<mat-card appearance="outlined" class="w-full h-full shadow-lg">
   <mat-card-header>
-    <mat-card-title style="font-family: 'Montserrat';" class="text-primary" >{{ user()?.username }}</mat-card-title>
-    <mat-card-subtitle style="font-family: 'Montserrat';">Perfis: {{ user()?.profiles?.join(', ') }}</mat-card-subtitle>
+    <mat-card-title style="font-family: 'Montserrat';" class="text-primary !text-lg xs:!text-2xl" >{{ user()?.username }}</mat-card-title>
+    <mat-card-subtitle style="font-family: 'Montserrat';" class="!text-xs xs:!text-lg">Perfis: {{ user()?.profiles?.join(', ') }}</mat-card-subtitle>
   </mat-card-header>
   <img
     mat-card-image
+    class="my-2 !hidden xl:!flex"
     [src]="avatarUrl()" />
-  <mat-card-actions>
+  <mat-card-actions class="mt-4 xs:mt-10 flex justify-center 3xl:mb-5">
     <app-small-icon-button
       [icon]="'add_photo_alternate'"
-      [text]="'Alterar imagem de perfil'"
-      (click)="onChangeCard(1)" />
+      [text]="'Alterar imagem'"
+      (click)="onChangeCard(1)"
+      class="hidden xs:flex" />
+    <app-mini-fab-button
+      [icon]="'add_photo_alternate'"
+      (click)="onChangeCard(1)"
+      class="xs:hidden" />
   </mat-card-actions>
 </mat-card>

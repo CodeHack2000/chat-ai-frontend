@@ -4,8 +4,8 @@
   [routerLink]="link()"
   (click)="this.onClick.emit()"
   style="font-family: 'Montserrat';"
-  class="!w-full !bg-surfaceBright !text-secondary !mt-2 !flex !justify-start !text-lg"
+  class="!w-screen md:!w-full !bg-surfaceBright !text-secondary !mt-2 !flex !justify-start !text-sm xs:!text-lg 3xl:!text-2xl"
 >
-  <mat-icon>{{ icon() }}</mat-icon>
+  <mat-icon class="!text-base md:!text-base 3xl:!text-xl">{{ icon() }}</mat-icon>
   <span>{{ text() }}</span>
 </button>

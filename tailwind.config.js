@@ -59,7 +59,10 @@ module.exports = {
       neutral10: "#191c1c"
     },
     extend: {
-
+      screens: {
+        'xs': '560px',
+        '3xl': '1920px'
+      }
     },
   },
   plugins: [],

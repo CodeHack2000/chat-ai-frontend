@@ -1,13 +1,13 @@
 <h2
   mat-dialog-title
   style="font-family: 'Montserrat';"
-  class="!text-2xl !text-onBackground !font-bold !mb-4"
+  class="!text-base xs:!text-2xl 3xl:!text-3xl !text-onBackground !font-bold !mb-4"
 >
   {{ data.title }}
 </h2>
 <mat-dialog-content
   style="white-space: pre-wrap; font-family: 'Montserrat';"
-  class="!text-onBackground !text-lg !font-light !mb-4"
+  class="!text-onBackground !font-light !mb-4 !text-sm xs:!text-lg 3xl:!text-2xl !pr-20"
 >
 {{ data.recommendedProducts() }}
 </mat-dialog-content>
@@ -15,6 +15,7 @@
   <button
     mat-button
     mat-dialog-close
+    class="xs:!text-lg 3xl:!text-xl"
   >
     Fechar
   </button>

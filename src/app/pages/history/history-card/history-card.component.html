@@ -4,12 +4,12 @@
     [icon]="'cloud_sync'"
     [text]="'Atualizar histórico...'"
     (onClick)="updateUserHistoryMessages()"
-    class="absolute right-5 top-5"
+    class="absolute right-5 top-16"
   />
 
   <cdk-virtual-scroll-viewport
     itemSize="100"
-    class="!h-full"
+    class="!h-full mt-16 lg:mt-20 xl:mt-24"
   >
 
     <mat-accordion class="!w-full">
@@ -18,7 +18,7 @@
           <mat-expansion-panel-header>
             <mat-panel-title>
               <span
-                class="!text-primary"
+                class="!text-primary xs:!text-xl 3xl:!text-2xl"
                 style="white-space: pre-wrap; font-family: 'Montserrat';"
               >
                 {{ item.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) }}

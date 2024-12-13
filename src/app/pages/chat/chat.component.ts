@@ -13,10 +13,11 @@ import { SidenavWithButtonComponent } from "../../components/menu/sidenav-with-b
 
 import { MatIconModule } from '@angular/material/icon';
 import { ProgressBarComponent } from "../../components/progress-bar/progress-bar.component";
+import { MainHeaderComponent } from "../../components/headers/main-header/main-header.component";
 
 @Component({
   selector: 'app-chat',
-  imports: [ChatFieldComponent, WelcomeCardComponent, MessagesCardComponent, SecondaryTitleComponent, MatButtonModule, MatSidenavModule, MatIconModule, SidenavWithButtonComponent, SidenavWithButtonComponent, ProgressBarComponent],
+  imports: [ChatFieldComponent, WelcomeCardComponent, MessagesCardComponent, SecondaryTitleComponent, MatButtonModule, MatSidenavModule, MatIconModule, SidenavWithButtonComponent, SidenavWithButtonComponent, ProgressBarComponent, MainHeaderComponent],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.scss'
 })

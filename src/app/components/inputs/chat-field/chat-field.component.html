@@ -1,20 +1,20 @@
-<mat-form-field appearance="fill" class="!w-full !px-10">
+<mat-form-field appearance="fill" class="!w-full px-2 xs:px-5 !sm:px-10">
   <textarea
     style="font-family: 'Montserrat';"
     matInput
     [(ngModel)]="text"
     rows="2"
-    oninput="this.rows = this.value ? Math.min(this.scrollHeight / 20, 10) : 2;"
-    class="!resize-none !text-onBackground !text-lg"
+    oninput="this.rows = this.value ? Math.min(this.scrollHeight / 30, 10) : 2;"
+    class="!resize-none !text-sm xs:!text-xl sm:!text-lg 3xl:!text-2xl"
     placeholder="Mensagem Chatbot AI for Healthcare Triage"
     autofocus
   ></textarea>
   <button
     matSuffix
     mat-icon-button
-    class="!mx-4"
+    class="!mx-2 !sm:mx-4"
     (click)="onSubmit()"
   >
-    <mat-icon matSuffix class="text-primary">send</mat-icon>
+    <mat-icon matSuffix class="text-primary text-sm xs:text-lg sm:text-base 3xl:text-2xl">send</mat-icon>
   </button>
 </mat-form-field>

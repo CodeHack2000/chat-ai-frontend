@@ -1,7 +1,7 @@
-<mat-card appearance="outlined" class="w-full shadow-lg">
+<mat-card appearance="outlined" class="w-full h-full shadow-lg">
   <mat-card-header>
-    <mat-card-title style="font-family: 'Montserrat';" class="text-primary" >Alterar imagem de perfil</mat-card-title>
-    <mat-card-subtitle style="font-family: 'Montserrat';">Selecione uma imagem</mat-card-subtitle>
+    <mat-card-title style="font-family: 'Montserrat';" class="text-primary !text-lg xs:!text-2xl 3xl:!text-3xl" >Alterar imagem de perfil</mat-card-title>
+    <mat-card-subtitle style="font-family: 'Montserrat';" class="!text-xs xs:!text-lg 3xl:!text-xl">Selecione uma imagem</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content class="!py-10">
     <form>
@@ -10,20 +10,29 @@
         formControlName="image"
         type="file"
         accept="image/png, image/jpeg, image/jpg"
-        class="custom-file-input bg-onPrimary text-primary w-full rounded-lg"
+        class="custom-file-input bg-onPrimary text-primary w-full rounded-lg !text-xs xs:!text-base 3xl:!text-xl"
         style="font-family: 'Montserrat';"
         (change)="onFileChange($event)" >
     </form>
   </mat-card-content>
-  <mat-card-actions class="flex justify-end">
+  <mat-card-actions class="flex justify-end 3xl:mb-5">
     <app-small-icon-button
       [icon]="'cancel'"
       [text]="'Cancelar'"
       (click)="onChangeCard(0)"
-      class="mr-2" />
+      class="mr-2 hidden md:flex" />
     <app-small-icon-button
       [icon]="'add_photo_alternate'"
       [text]="'Submeter'"
-      (click)="submit()" />
+      (click)="submit()"
+      class="hidden md:flex" />
+    <app-mini-fab-button
+      [icon]="'cancel'"
+      (click)="onChangeCard(0)"
+      class="md:hidden mr-1" />
+    <app-mini-fab-button
+      [icon]="'add_photo_alternate'"
+      (click)="submit()"
+      class="md:hidden" />
   </mat-card-actions>
 </mat-card>

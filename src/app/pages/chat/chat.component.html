@@ -1,12 +1,8 @@
 <div class="bg-background h-full flex flex-col items-center w-full">
 
-  <app-secondary-title
-    [text]="'Chatbot AI for Healthcare Triage'"
-    class="h-fit mt-5" />
+  <app-main-header />
 
   <main class="w-full flex flex-col items-center mt-5 h-full">
-
-    <app-sidenav-with-button />
 
     @if (chatService.getUserChatMessages().length === 0) {
       <app-welcome-card

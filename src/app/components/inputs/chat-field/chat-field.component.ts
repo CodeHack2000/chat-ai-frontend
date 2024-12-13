@@ -29,7 +29,9 @@ export class ChatFieldComponent {
   text = '';
 
   onSubmit() {
-    this.submit.emit(this.text);
-    this.text = '';
+    if (this.text.length > 0) {
+      this.submit.emit(this.text);
+      this.text = '';
+    }
   }
 }

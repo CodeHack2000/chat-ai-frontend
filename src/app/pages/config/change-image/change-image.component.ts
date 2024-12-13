@@ -7,13 +7,15 @@ import { SmallIconButtonComponent } from "../../../components/buttons/small-icon
 import { UserConfigService } from '../../../services/user-config.service';
 import { SnackbarService } from '../../../services/snackbar.service';
 import { AuthService } from '../../../services/auth.service';
+import { MiniFabButtonComponent } from "../../../components/buttons/mini-fab-button/mini-fab-button.component";
 
 @Component({
   selector: 'app-change-image',
   imports: [
     MatCardModule,
     SmallIconButtonComponent,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MiniFabButtonComponent
 ],
   templateUrl: './change-image.component.html',
   styleUrl: './change-image.component.scss'

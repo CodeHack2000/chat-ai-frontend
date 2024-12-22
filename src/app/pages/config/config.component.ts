@@ -2,8 +2,6 @@ import { Component, inject, signal } from '@angular/core';
 
 import { MatCardModule } from '@angular/material/card';
 
-import { SecondaryTitleComponent } from "../../components/titles/secondary-title/secondary-title.component";
-import { SidenavWithButtonComponent } from "../../components/menu/sidenav-with-button/sidenav-with-button.component";
 import { ProgressBarComponent } from "../../components/progress-bar/progress-bar.component";
 import { PrimaryTitleComponent } from "../../components/titles/primary-title/primary-title.component";
 import { AuthService } from '../../services/auth.service';
@@ -15,8 +13,6 @@ import { MainHeaderComponent } from "../../components/headers/main-header/main-h
 @Component({
   selector: 'app-config',
   imports: [
-    SecondaryTitleComponent,
-    SidenavWithButtonComponent,
     ProgressBarComponent,
     PrimaryTitleComponent,
     MatCardModule,

@@ -77,8 +77,8 @@ export class LoginFormComponent {
 
     this.authService.login(user).subscribe((result: boolean) => {
       if (result) {
-        this.snackbarService.openSnackBar('Login efetuado com sucesso!', 1);
         this.router.navigate(['/']);
+        this.snackbarService.openSnackBar('Login efetuado com sucesso!', 1);
       }
       else {
         this.snackbarService.openSnackBar('Credenciais inválidas!', 2);

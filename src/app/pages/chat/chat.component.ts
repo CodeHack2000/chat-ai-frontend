@@ -1,23 +1,20 @@
 import { Component, inject, signal, ViewChild } from '@angular/core';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+
 import { ChatFieldComponent } from "../../components/inputs/chat-field/chat-field.component";
 import { WelcomeCardComponent } from "./welcome-card/welcome-card.component";
 import { ChatService } from '../../services/chat.service';
 import { MessagesCardComponent } from "./messages-card/messages-card.component";
-import { SecondaryTitleComponent } from "../../components/titles/secondary-title/secondary-title.component";
-
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidenavComponent } from "../../components/menu/sidenav/sidenav.component";
-import { SidenavWithButtonComponent } from "../../components/menu/sidenav-with-button/sidenav-with-button.component";
-
-import { MatIconModule } from '@angular/material/icon';
 import { ProgressBarComponent } from "../../components/progress-bar/progress-bar.component";
 import { MainHeaderComponent } from "../../components/headers/main-header/main-header.component";
 
 @Component({
   selector: 'app-chat',
-  imports: [ChatFieldComponent, WelcomeCardComponent, MessagesCardComponent, SecondaryTitleComponent, MatButtonModule, MatSidenavModule, MatIconModule, SidenavWithButtonComponent, SidenavWithButtonComponent, ProgressBarComponent, MainHeaderComponent],
+  imports: [ChatFieldComponent, WelcomeCardComponent, MessagesCardComponent, MatButtonModule, MatSidenavModule, MatIconModule, ProgressBarComponent, MainHeaderComponent],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.scss'
 })

@@ -1,9 +1,10 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { ChatMessage, Message } from '../models/chat-message.model';
+import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { catchError, map, Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+
 import { AuthService } from './auth.service';
+import { ChatMessage, Message } from '../models/chat-message.model';
 
 @Injectable({
   providedIn: 'root'

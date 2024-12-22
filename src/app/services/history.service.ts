@@ -1,8 +1,8 @@
 import { inject, Injectable, signal } from '@angular/core';
-
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from './auth.service';
 import { catchError, map, Observable, of } from 'rxjs';
+
+import { AuthService } from './auth.service';
 import { ApiHistoryResponse, UserHistory, UserHistoryByDate, UserHistoryMessages } from '../models/history-messages.model';
 
 @Injectable({

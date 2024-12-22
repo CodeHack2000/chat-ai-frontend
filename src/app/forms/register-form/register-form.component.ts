@@ -96,8 +96,8 @@ export class RegisterFormComponent {
 
     this.authService.register(user).subscribe((result: boolean) => {
       if (result) {
-        this.snackbarService.openSnackBar('Registo efetuado com sucesso!', 1);
         this.router.navigate(['/login']);
+        this.snackbarService.openSnackBar('Registo efetuado com sucesso!', 1);
       }
       else {
         this.snackbarService.openSnackBar('Ocorreu um erro no registo!', 2);

@@ -1,13 +1,12 @@
 import { Component, signal } from '@angular/core';
-import { SecondaryTitleComponent } from "../../components/titles/secondary-title/secondary-title.component";
-import { SidenavWithButtonComponent } from "../../components/menu/sidenav-with-button/sidenav-with-button.component";
+
 import { PrimaryTitleComponent } from "../../components/titles/primary-title/primary-title.component";
 import { PlanCardComponent } from "./plan-card/plan-card.component";
 import { MainHeaderComponent } from "../../components/headers/main-header/main-header.component";
 
 @Component({
   selector: 'app-user-plan',
-  imports: [SecondaryTitleComponent, SidenavWithButtonComponent, PrimaryTitleComponent, PlanCardComponent, MainHeaderComponent],
+  imports: [PrimaryTitleComponent, PlanCardComponent, MainHeaderComponent],
   templateUrl: './user-plan.component.html',
   styleUrl: './user-plan.component.scss'
 })
